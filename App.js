@@ -1,14 +1,24 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
 import { NavigationContainer, useNavigation  } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 function HomeScreen() {
   const navigation = useNavigation();
+  const [text, onChangeText] = React.useState('');
   return(
     <View style={styles.container}>
     <Text style={styles.text} >ARIEL DE QUISSAMÃ</Text>
+    <TextInput
+        placeholder="E-mail"
+        keyboardType="email-address"
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+      />
     <Button style={styles.button} title='cadastro' onPress={()=>{navigation.navigate('Cadastro')}}/>
+    <Text>{text}</Text>
     <StatusBar style="auto" />
     </View>
   )
@@ -38,19 +48,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0324fc',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: '60px',
-    fontWeight: 'bold',
-    color: '#ff0000'
-  },
-  button: {
-    
-  }
+
   
 });
